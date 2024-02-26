@@ -1,0 +1,67 @@
+ATM Project
+This have client.c,server.c and database.txt
+database.txt contains ID,PIN,Balance in structrure format 
+Write a C program for client.c and server.c(having threads) using TCP protocol
+
+client.c contains
+
+1)Give the ID in command line argument
+2)Send ID to the server
+3)receive the id confirmation from server
+4)If ID is not available in text file(database.txt)
+    -receive error message from server
+    -Display error message
+    -EXIT
+5)If ID is correct,Enter PIN in client
+6)Send the PIN to server for verification
+7)If PIN is wrong
+    -receive error message from server
+    -Display error message 
+    -EXIT
+8)If PIN is correct ,proceed to next step
+9)Display the options1)balance 2)withdraw 3)deposit,based on operation operations are done
+9)if balance,
+    -receive balance from server
+    -Display balance
+    -EXIT
+10)if withdraw,
+    If there is no sufficient balance
+    -receive error message from server 
+    -Display the error message 
+    -EXIT
+   If there is sufficient balance
+    -receive debited amount from server
+    -Display the debited amount
+    -EXIT
+11)if deposit,
+    -Display the credited amount given from server
+    -EXIT
+
+server.c contains
+
+1)ID is received from the client
+2)verify the ID from the text file(database.txt)
+    -if ID is not available in text file (database.txt)
+    -error message send to the client
+3)If ID available,proceed to next step
+4)send ID confirmation message to the client.
+5)Receive PIN from client
+6)Verify the PIN from text file(database.txt)
+    -if PIN is not available in text file(database.txt)
+    -error message send to the client
+7)If PIN is correct,receive the option form client,based on option operations are done
+8)if balance()
+    -Fetch the balance amount from text file(database.txt)
+    -send balance amount to the client
+9)if withdraw()
+    -Enter the amount 
+    -Checking,there is a sufficient balance or not from text file(database.txt) based on given id
+    -if there is no sufficient balance(send the error message to the client)
+    -if there is suffient balance,fetch the balance of particular ID from text file(database.txt) and then decrement the balance and then update into the text file(database.txt)
+    -withdrawal amount send to the client
+10)if deposit()
+    -Enter the amount 
+    -Fetch the amount of particular ID from text file(database.txt),increment the amount and update into the text file(database.txt)
+    -deposited amount send to the client
+
+
